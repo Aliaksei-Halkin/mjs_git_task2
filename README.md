@@ -1,329 +1,39 @@
-Hello world! first test vim
-Hello GIT! second test, create changes
- Paste my changes from git console:
+### Task 2
 
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git
-$ git init
-Initialized empty Git repository in D:/JavaLab/mod1_git/.git/
+#### Part 1
+We are going to practice some skills obtained in the previous task. If you come across something you still don’t know, please use links provided in the descriptions, internet search, other mentees and you mentor as sources of knowledge and help.
+For this task you will create two separate branches ***git\_1*** and ***git\_2*** in your remote repository and local <span class="underline">tracked</span> branches with same names. Both these branches should be made of the ***git\_task*** branch.
+1. ***git\_1***: Add and commit *firstFile.txt* file with 10 lines.
+2. ***git\_1***: Add and commit *secondFile.txt* file with 10 lines.
+3. Merge branch ***git\_1*** to ***git\_2***
+4. ***git\_2*:** Update and commit any **two** lines in *secondFile.txt*.
+5. ***git\_1*:** Update and commit **the same** 2 lines with the different info in *secondFile.txt*
+6. Merge branch ***git\_2*** to ***git\_1*,** resolve conflict. Left **all** (4) modified lines. Commit.
+7. ***git\_1***: Update and commit 1.txt file, modify two lines.
+8. ***git\_1***: Update and commit 1.txt file, modify **another** two lines.
+9. Transfer changes of commit from <span class="underline">Step 7 only</span> to ***git\_2*,** using **format patch**.
+10. Transfer changes of commit from <span class="underline">Step 8 only</span> to ***git\_2*,** using **cherrypick** command.
+11. ***git\_2*:** Concatenate the last two commits using ***reset** + **commit*** commands.
+12. ***git\_2*:** Change date, author and message of the last commit and add non-empty *thirdFile.txt* file to it.
+13. ***git\_2***: Create a **new** commit that *reverts* changes of the last one.
+14. ***git\_2*:** Create and commit *thirdFile.txt* file.
+15. ***git\_2***: Run command that removes all changes of the last two commits.
+16. Synchronize ***git\_1*** and ***git\_2*** with a remote repository.
+17. Clone your project to another folder.
+18. **folder2: *git\_1*:** Change two lines in *firstFile.txt*. **Commit** + **Push**.
+19. **folder1: *git\_1*:** Change **another** two lines in *firstFile.txt*.
+20. **folder1: *git\_1*:*   
+    * Change **another** line in *firstFile.txt* (not the same as in 18, 19).
+    * **Merge** changes from Step 18 (pull) **without** committing changes from Step 19 and any additional commits.
+    * **Push**.
+    * Return local state of Step 19. (***stash***)
 
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git status
-On branch master
-
-No commits yet
-
-nothing to commit (create/copy files and use "git add" to track)
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ ls -l
-total 0
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ ^C
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ touch README.md
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git status
-On branch master
-
-No commits yet
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        README.md
-
-nothing added to commit but untracked files present (use "git add" to track)
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ vim README.md
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git status
-On branch master
-
-No commits yet
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        README.md
-
-nothing added to commit but untracked files present (use "git add" to track)
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git add .
-warning: LF will be replaced by CRLF in README.md.
-The file will have its original line endings in your working directory
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git status
-On branch master
-
-No commits yet
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-        new file:   README.md
-
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git commit -m "created readme"
-[master (root-commit) a0efd7a] created readme
- 1 file changed, 1 insertion(+)
- create mode 100644 README.md
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git status
-On branch master
-nothing to commit, working tree clean
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git checkout -b develop
-Switched to a new branch 'develop'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (develop)
-$ git  checkout -b git_task
-
-Switched to a new branch 'git_task'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_task)
-$
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_task)
-$ git checkout -b git_0
-Switched to a new branch 'git_0'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git show-branch
-! [develop] created readme
- * [git_0] created readme
-  ! [git_task] created readme
-   ! [master] created readme
-----
-+*++ [develop] created readme
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ vim README.md
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git status
-On branch git_0
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        modified:   README.md
-
-no changes added to commit (use "git add" and/or "git commit -a")
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git add.
-git: 'add.' is not a git command. See 'git --help'.
-
-The most similar command is
-        add
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git add .
-warning: LF will be replaced by CRLF in README.md.
-The file will have its original line endings in your working directory
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git status
-On branch git_0
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        modified:   README.md
-
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git diff --cached
-diff --git a/README.md b/README.md
-index 79a5284..37ac54b 100644
---- a/README.md
-+++ b/README.md
-@@ -1 +1,2 @@
- Hello world! first test vim
-+Hello GIT! second test, create changes
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git commit -m "added git_0 line to readme file"
-[git_0 a0ba936] added git_0 line to readme file
- 1 file changed, 1 insertion(+)
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git status
-On branch git_0
-nothing to commit, working tree clean
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_0)
-$ git checkout git_task
-Switched to branch 'git_task'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_task)
-$ git merge git_0 --no-ff^C
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_task)
-$ git merge git_0 --no-ff
-Merge made by the 'recursive' strategy.
- README.md | 1 +
- 1 file changed, 1 insertion(+)
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_task)
-$ gitk
-g
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_task)
-$ git show-branch
-! [develop] created readme
- ! [git_0] added git_0 line to readme file
-  * [git_task] Merge branch 'git_0' into git_task
-   ! [master] created readme
-----
-  -  [git_task] Merge branch 'git_0' into git_task
- +*  [git_0] added git_0 line to readme file
-++*+ [develop] created readme
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (git_task)
-$ git checkout develop
-Switched to branch 'develop'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (develop)
-$ git merge git_task --no--ff
-error: unknown option `no--ff'
-usage: git merge [<options>] [<commit>...]
-   or: git merge --abort
-   or: git merge --continue
-
-    -n                    do not show a diffstat at the end of the merge
-    --stat                show a diffstat at the end of the merge
-    --summary             (synonym to --stat)
-    --log[=<n>]           add (at most <n>) entries from shortlog to merge commit message
-    --squash              create a single commit instead of doing a merge
-    --commit              perform a commit if the merge succeeds (default)
-    -e, --edit            edit message before committing
-    --cleanup <mode>      how to strip spaces and #comments from message
-    --ff                  allow fast-forward (default)
-    --ff-only             abort if fast-forward is not possible
-    --rerere-autoupdate   update the index with reused conflict resolution if possible
-    --verify-signatures   verify that the named commit has a valid GPG signature
-    -s, --strategy <strategy>
-                          merge strategy to use
-    -X, --strategy-option <option=value>
-                          option for selected merge strategy
-    -m, --message <message>
-                          merge commit message (for a non-fast-forward merge)
-    -F, --file <path>     read message from file
-    -v, --verbose         be more verbose
-    -q, --quiet           be more quiet
-    --abort               abort the current in-progress merge
-    --quit                --abort but leave index and working tree alone
-    --continue            continue the current in-progress merge
-    --allow-unrelated-histories
-                          allow merging unrelated histories
-    --progress            force progress reporting
-    -S, --gpg-sign[=<key-id>]
-                          GPG sign commit
-    --overwrite-ignore    update ignored files (default)
-    --signoff             add Signed-off-by:
-    --no-verify           bypass pre-merge-commit and commit-msg hooks
-
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (develop)
-$ ^C
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (develop)
-$ git merge git_task --no-ff
-Merge made by the 'recursive' strategy.
- README.md | 1 +
- 1 file changed, 1 insertion(+)
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (develop)
-$ git checkout master
-Switched to branch 'master'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git merge develop --no--ff
-error: unknown option `no--ff'
-usage: git merge [<options>] [<commit>...]
-   or: git merge --abort
-   or: git merge --continue
-
-    -n                    do not show a diffstat at the end of the merge
-    --stat                show a diffstat at the end of the merge
-    --summary             (synonym to --stat)
-    --log[=<n>]           add (at most <n>) entries from shortlog to merge commit message
-    --squash              create a single commit instead of doing a merge
-    --commit              perform a commit if the merge succeeds (default)
-    -e, --edit            edit message before committing
-    --cleanup <mode>      how to strip spaces and #comments from message
-    --ff                  allow fast-forward (default)
-    --ff-only             abort if fast-forward is not possible
-    --rerere-autoupdate   update the index with reused conflict resolution if possible
-    --verify-signatures   verify that the named commit has a valid GPG signature
-    -s, --strategy <strategy>
-                          merge strategy to use
-    -X, --strategy-option <option=value>
-                          option for selected merge strategy
-    -m, --message <message>
-                          merge commit message (for a non-fast-forward merge)
-    -F, --file <path>     read message from file
-    -v, --verbose         be more verbose
-    -q, --quiet           be more quiet
-    --abort               abort the current in-progress merge
-    --quit                --abort but leave index and working tree alone
-    --continue            continue the current in-progress merge
-    --allow-unrelated-histories
-                          allow merging unrelated histories
-    --progress            force progress reporting
-    -S, --gpg-sign[=<key-id>]
-                          GPG sign commit
-    --overwrite-ignore    update ignored files (default)
-    --signoff             add Signed-off-by:
-    --no-verify           bypass pre-merge-commit and commit-msg hooks
-
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git merge develop --no-f
-hint: Waiting for your editor to close the file...       1 [sig] bash 977! sigpacket::process: Suppressing signal 18 to win32 process (pid 8836)
- 248003 [sig] bash 977! sigpacket::process: Suppressing signal 18 to win32 process (pid 8836)
-1880172 [sig] bash 977! sigpacket::process: Suppressing signal 18 to win32 process (pid 8836)
-2551270 [sig] bash 977! sigpacket::process: Suppressing signal 18 to win32 process (pid 8836)
-Merge made by the 'recursive' strategy.
- README.md | 1 +
- 1 file changed, 1 insertion(+)
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git log --all --graph --decorate --oneline --simplify-by-decoration
-* 1b83c6d (HEAD -> master) Merge branch 'develop'
-* a4b362c (develop) Merge branch 'git_task' into develop
-* 31decb1 (git_task) Merge branch 'git_0' into git_task
-* a0ba936 (git_0) added git_0 line to readme file
-* a0efd7a created readme
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git log --graph --oneline –all command
-fatal: ambiguous argument '–all': unknown revision or path not in the working tree.
-Use '--' to separate paths from revisions, like this:
-'git <command> [<revision>...] -- [<file>...]'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git log --graph --oneline --all command
-fatal: ambiguous argument 'command': unknown revision or path not in the working tree.
-Use '--' to separate paths from revisions, like this:
-'git <command> [<revision>...] -- [<file>...]'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git log --graph --oneline –-all
-fatal: ambiguous argument '–-all': unknown revision or path not in the working tree.
-Use '--' to separate paths from revisions, like this:
-'git <command> [<revision>...] -- [<file>...]'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$ git log --graph --oneline –all
-fatal: ambiguous argument '–all': unknown revision or path not in the working tree.
-Use '--' to separate paths from revisions, like this:
-'git <command> [<revision>...] -- [<file>...]'
-
-Alex@DESKTOP-JH9NJGL MINGW64 /d/JavaLab/mod1_git (master)
-$
-
+#### Part 2
+For this task you should learn how to use **interactive rebase**, thus other ways of achieving the same are prohibited. Show the following steps to your mentor during the demo:
+1. Create ***git\_3*** branch from ***git\_task***. Checkout to ***git\_3***.
+2. Add new empty file *doubtingFile.txt* and commit it.
+3. Add a line to a file and commit changes. Do it 5 times. You should end up with 5 lines in a file and 6 commits: 1 for creating an empty file and 5 for adding a line.
+4. Check you log and copy it somewhere.
+5. Launch interactive rebase for 5 last commits, squash all the latest commits into the first one. Reword first commit. You should end up with 2 commits: 1 for creating an empty file and second for adding 5 lines. Second commit should have new commit message.
+6. Check you log and compare it with the previous one. Look at the hash, date, commit message. Explain what changed and why.
+7. Check you reflog. Explain to you mentor what you can see and why.
